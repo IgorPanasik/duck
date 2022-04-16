@@ -31,7 +31,7 @@ public class HomePageTest extends TestBase {
         ElementsCollection footer ;
         logger.info("Start test duckClickDeliveryInformationTest");
         footer = HomePage.duckClickDeliveryInformation();
-        $$(footer).get(1).shouldHave(text("Delivery Information"));
+        $$(footer).get(1).shouldHave(text("Delivery Information21321331"));
     }
     @Epic(value = "Duck-site")
     @Feature(value = "Check page")
