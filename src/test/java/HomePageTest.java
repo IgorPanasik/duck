@@ -39,7 +39,7 @@ public class HomePageTest extends TestBase {
     @Test
     public void duckClickTermConditionTest() {
 
-        String footer = "";
+        String footer ;
         logger.info("Start test duckClickTermConditionTest");
         footer = HomePage.duckClickTermCondition();
         logger.info(String.format("TextFooter: %s ",footer));

@@ -8,8 +8,6 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.Collections;
-
-import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 
 @Listeners({Listener.class})
@@ -20,10 +18,11 @@ public class RubberDucksPageTest extends TestBase {
     @Story(value = "Color and Sticker")
     @Test
     public void duckSubcategoryTest() throws InterruptedException {
-        int result = 0;
+
+        int result=0;
 
         result = RubberDucksPage.duckSubcategory();
-        assertFalse((result==4),String.format("Result= %s expRes = 3", result));
+        assertTrue((result==3),String.format("Result= %s expRes = 3", result));
     }
 
     @Epic(value = "Duck-site")
