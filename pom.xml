@@ -15,15 +15,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
-
-        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>7.4.0</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
@@ -34,7 +31,6 @@
             <artifactId>selenium-chrome-driver</artifactId>
             <version>${Ver}</version>
         </dependency>
-
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-support</artifactId>
@@ -66,18 +62,18 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
+               <groupId>org.apache.maven.plugins</groupId>
+               <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
-                    <argLine>-Dfile.encoding=UTF-8</argLine>
+                  <argLine>-Dfile.encoding=UTF-8</argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>src/test/java/resourcse/test.xml</suiteXmlFile>
                     </suiteXmlFiles>
                     <systemPropertyVariables>
                         <rp.endpoint>https://demo.reportportal.io</rp.endpoint>
-                        <rp.uuid>d6b02cd5-bc44-454b-9128-3c6df81f7fac</rp.uuid>
-                        <rp.launch>igorpanasik _TEST_EXAMPLE</rp.launch>
+                        <rp.uuid>4cb54d73-0da8-41ce-950d-69e1a6263d7e</rp.uuid>
+                        <rp.launch>igorpanasik_TEST_EXAMPLE</rp.launch>
                         <rp.project>igorpanasik_personal</rp.project>
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                     </systemPropertyVariables>

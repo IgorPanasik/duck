@@ -26,7 +26,7 @@ public class RubberDucksPage {
 
 
 
-    public static int duckSubcategory() throws InterruptedException {     // Actions
+    public static int duckSubcategory() throws InterruptedException {
         String sticker;
         int result = 0;
         String name;
