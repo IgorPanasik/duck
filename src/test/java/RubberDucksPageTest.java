@@ -63,7 +63,7 @@ public class RubberDucksPageTest extends TestBase {
     @Story(value = "Sticker")
     @Test
     public void duckNewLabelTest() {
-        int[]  Result;
+        int[]  Result = new int[2];
         Result = RubberDucksPage.duckNewLabel();
         assertTrue(Result[0] == Result[1],String.format("Exp: %s Res: %s ",Result[0],Result[1]));
         logger.info(String.format("ExpLabel: %s ActualLabel: %s",Result[0],Result[1]));
