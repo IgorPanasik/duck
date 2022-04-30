@@ -3,6 +3,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 import java.util.ArrayList;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -22,9 +23,9 @@ public class RubberDucksPage {
     private static By buttonPriceLocator = By.xpath("//nav[@class='filter']//*[contains(@class,'button')][text()='Price']");
     private static By productsPriceLocator = By.xpath("//ul[@class='listing-wrapper products']/" +
             "li[@class='product column shadow hover-light']//span[@class='price']");
-    private static By stickerNewLocator =By.xpath("//div[@class='sticker new']");
+    private static By stickerNewLocator = By.xpath("//div[@class='sticker new']");
 
-
+    public static By locatorYellowDuck = By.xpath("//a[@class='link'][@title='Yellow Duck']");
 
     public static int duckSubcategory() throws InterruptedException {
         String sticker;
@@ -34,63 +35,82 @@ public class RubberDucksPage {
         actions().moveToElement($(buttonRubberDarkLocator)).perform();
         actions().click($(buttonSubCategoryLocator)).perform();
         $$(wrapperSubCategoryProductsLocator).shouldBe();
-        for (WebElement el : $$(wrapperSubCategoryProductsLocator)){
+        for (WebElement el : $$(wrapperSubCategoryProductsLocator)) {
             name = el.findElement(By.className("name")).getText();
             sticker = el.findElement(stickerSubCategoryLocator).getText();
-            if  ((name.equals("Yellow Duck")) && ( sticker.equals("SALE"))) {
+            if ((name.equals("Yellow Duck")) && (sticker.equals("SALE"))) {
                 result++;
-                logger.info(String.format("Name:  %s  Sticker: %s " ,name,sticker));
+                logger.info(String.format("Name:  %s  Sticker: %s ", name, sticker));
             }
-            if  ((name.equals("Green DucK")) && ( sticker.equals("NEW"))) {
+            if ((name.equals("Green DucK")) && (sticker.equals("NEW"))) {
                 result++;
-                logger.info(String.format("Name:  %s  Sticker: %s " ,name,sticker));
+                logger.info(String.format("Name:  %s  Sticker: %s ", name, sticker));
             }
-            if  ((name.equals("Розовая уточка")) && ( sticker.equals("NEW"))){
+            if ((name.equals("Розовая уточка")) && (sticker.equals("NEW"))) {
                 result++;
-                logger.info(String.format("Name:  %s  Sticker: %s " ,name,sticker));
+                logger.info(String.format("Name:  %s  Sticker: %s ", name, sticker));
             }
 
         }
-        return  result;
+        return result;
     }
 
-    public static ArrayList duckSortName(){
+    public static ArrayList duckSortName() {
         ArrayList<String> name = new ArrayList<>();
 
         $(buttonRubberDarkLocator).click();
         $(buttonRubberDarkNameLocator).click();
-        for (WebElement element :  $$(productsRubberDarkLocator)){
+        for (WebElement element : $$(productsRubberDarkLocator)) {
             name.add(element.getText());
-            logger.info(String.format("Name: %s",element.getText()));
+            logger.info(String.format("Name: %s", element.getText()));
         }
-        return  name;
+        return name;
     }
-    public static ArrayList duckSortPrice() {
-        ArrayList<Float> price = new ArrayList<>();;
 
+    public static ArrayList duckSortPrice() {
+        ArrayList<Float> price = new ArrayList<>();
         $(buttonRubberDarkLocator).click();
         $(buttonPriceLocator).click();
-        for (WebElement element :  $$(productsPriceLocator)){
+        for (WebElement element : $$(productsPriceLocator)) {
             String e = element.getText();
             logger.info(String.format("Price Duck: %s", e));
-            Float a = Float.valueOf(e.substring(0,e.indexOf("€")-1));
+            Float a = Float.valueOf(e.substring(0, e.indexOf("€") - 1));
             price.add(a);
         }
         return price;
     }
+
     public static int[] duckNewLabel() {
 
         int countLabel = 0;
-        int[]  Result = new int[2];
+        int[] Result = new int[2];
         $(buttonRubberDarkLocator).click();
 
         for (WebElement element : $$(stickerNewLocator)) {
             if (element.getText().equals("NEW"))
                 countLabel++;
+
         }
         Result[0] = $$(stickerNewLocator).size();
         Result[1] = countLabel;
         return Result;
     }
 
+
+
+    public static String getAccessibility(By locatorYellowDuck) {
+        actions().moveToElement($(buttonRubberDarkLocator)).perform();
+        actions().click($(buttonSubCategoryLocator)).perform();
+
+        return $(locatorYellowDuck).getAccessibleName();
+    }
+
+
+
 }
+
+
+
+
+
+
